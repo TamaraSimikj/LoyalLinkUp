@@ -15,10 +15,10 @@ public class Points {
 
     @OneToOne
     @JoinColumn(name="business_id")
-    private Business business_id;
+    private Business business;
 
     @OneToOne
     @JoinColumn(name="client_id")
-    private Client client_id;
+    private Client client;
 
 }

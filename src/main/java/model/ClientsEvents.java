@@ -11,9 +11,9 @@ public class ClientsEvents {
 
     @OneToOne
     @JoinColumn(name="event_id")
-    private Event event_id;
+    private Event event;
 
     @OneToOne
     @JoinColumn(name="client_id")
-    private Client client_id;
+    private Client client;
 }

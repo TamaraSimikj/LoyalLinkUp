@@ -23,5 +23,5 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name="business_id")
-    private Business business_id;
+    private Business business;
 }
