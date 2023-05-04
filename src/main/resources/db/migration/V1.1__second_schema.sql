@@ -11,7 +11,7 @@ CREATE TABLE if not exists events
 );
 
 
-CREATE TABLE if not exists review
+CREATE TABLE if not exists reviews
 (
     review_id bigserial primary key,
     date_time timestamp,
