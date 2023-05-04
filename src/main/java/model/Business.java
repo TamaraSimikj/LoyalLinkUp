@@ -12,8 +12,7 @@ public class Business {
 
     private String name;
 
-
-    private String adress;
+    private String address;
 
     private String phone_number;
 
