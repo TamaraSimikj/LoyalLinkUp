@@ -1,14 +1,14 @@
 package service;
 
-import model.Client;
 import model.ClientsEvents;
 import model.dto.ClientsEventsDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientsEventsService {
     List<ClientsEvents> listAll ();
-    ClientsEvents findById(Long id);
+    Optional<ClientsEvents> findById(Long id);
 
     Boolean deleteById(Long id);
 
