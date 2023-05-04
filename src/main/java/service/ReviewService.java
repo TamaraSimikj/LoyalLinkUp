@@ -9,13 +9,19 @@ import java.util.List;
 
 public interface ReviewService {
 
-    List<Review> listAll ();
+    List<Review> listAll();
+
     Review findById(Long id);
 
     Boolean deleteById(Long id);
 
-    Review editById(Long id, ReviewDto reviewDto);
+    Review edit(Long id, ReviewDto reviewDto);
 
     Review create(ReviewDto reviewDto);
+    //dodadeni
+    List<Review> listByClientId(Long client_id);
 
+    List<Review> listByBusinessId(Long business_id);
+
+    List<Review> listByEventId(Long event_id);
 }

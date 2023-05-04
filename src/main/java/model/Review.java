@@ -2,12 +2,14 @@ package model;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 import model.Enum.TypeOfEvent;
 
 import java.time.LocalDateTime;
 
 @Table(name = "reviews")
 @Entity
+@Data
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,5 +33,15 @@ public class Review {
     @JoinColumn(name="event_id")
     private Event event;
 
+    Review(){
 
+    }
+    public Review(LocalDateTime date_time, String comment, Integer grade, Client client, Business business, Event event) {
+     this.date_time = date_time;
+     this.comment = comment;
+     this.grade = grade;
+     this.client = client;
+     this.business = business;
+     this.event = event;
+    }
 }
