@@ -1,7 +1,9 @@
 package model.dto;
 
+import lombok.Data;
 import model.Enum.TypeOfBusiness;
 
+@Data
 public class BusinessDto {
 
     private String name;

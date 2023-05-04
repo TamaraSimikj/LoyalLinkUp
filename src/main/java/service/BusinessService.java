@@ -1,12 +1,10 @@
 package service;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import model.Business;
-import model.Enum.TypeOfBusiness;
 import model.dto.BusinessDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BusinessService {
 
@@ -18,7 +16,7 @@ public interface BusinessService {
 
     List<Business> listAll();
 
-    Business findById(Long id);
+    Optional<Business> findById(Long id);
 
     //TODO:Event addEvent(EventDto eventDto); + drugite
 }
