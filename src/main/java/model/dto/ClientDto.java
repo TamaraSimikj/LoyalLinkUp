@@ -1,5 +1,8 @@
 package model.dto;
 
+import lombok.Data;
+
+@Data
 public class ClientDto {
 
     private String name;
