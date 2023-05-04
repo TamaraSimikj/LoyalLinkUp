@@ -19,4 +19,17 @@ public class Review {
 
     private Integer grade;
 
+    @ManyToOne
+    @JoinColumn(name="business_id")
+    private Business business_id;
+
+    @ManyToOne
+    @JoinColumn(name="client_id")
+    private Client client_id;
+
+    @ManyToOne
+    @JoinColumn(name="event_id")
+    private Event event_id;
+
+
 }
