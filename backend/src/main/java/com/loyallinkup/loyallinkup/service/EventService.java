@@ -11,7 +11,7 @@ public interface EventService {
 
         Event findById (Long event_id);
 
-        Event create (Long event_id, EventDto eventDto);
+        Event create (EventDto eventDto);
 
         Event edit (Long event_id, EventDto eventDto);
 

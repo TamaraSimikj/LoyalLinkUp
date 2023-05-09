@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.loyallinkup.loyallinkup.repo.BusinessRepo;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BusinessServiceImpl implements BusinessService {
@@ -55,7 +54,7 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
     @Override
-    public Optional<Business> findById(Long id) {
-        return this.businessRepo.findById(id);
+    public Business findById(Long id) {
+        return this.businessRepo.findById(id).get();
     }
 }

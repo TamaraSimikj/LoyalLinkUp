@@ -41,7 +41,7 @@ public class PointsServiceImpl implements PointsService
     public Points create(Long points_id, PointsDto pointsDto) {
 
         Client client = this.clientService.findById(pointsDto.getClient_id()).get();
-        Business business = this.businessService.findById(pointsDto.getBusiness_id()).get();
+        Business business = this.businessService.findById(pointsDto.getBusiness_id());
 
         Points points = new Points(points_id, pointsDto.getLoyal_points(), pointsDto.getLoyal_awards(), client, business);
         return this.pointsRepo.save(points);
@@ -52,7 +52,7 @@ public class PointsServiceImpl implements PointsService
 
         Points points = this.pointsRepo.findById(points_id).get();
         Client client = this.clientService.findById(pointsDto.getClient_id()).get();
-        Business business = this.businessService.findById(pointsDto.getBusiness_id()).get();
+        Business business = this.businessService.findById(pointsDto.getBusiness_id());
 
         points.setPoints_id(points_id);
         points.setLoyal_points(pointsDto.getLoyal_points());

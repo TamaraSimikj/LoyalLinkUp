@@ -27,7 +27,7 @@ public class FavoritesServiceImpl implements FavoritesService {
     @Override
     public Favorites create(Long business_id, Long client_id) {
 
-        Business business = this.businessService.findById(business_id).get();
+        Business business = this.businessService.findById(business_id);
         Client client = this.clientService.findById(client_id).get();
         Favorites favorites = new Favorites(business,client);
 
@@ -46,7 +46,7 @@ public class FavoritesServiceImpl implements FavoritesService {
     @Override
     public Favorites edit(Long favorites_id, Long business_id, Long client_id) {
         Favorites favorites = this.favoritesRepo.findById(favorites_id).get();
-        Business business = this.businessService.findById(business_id).get();
+        Business business = this.businessService.findById(business_id);
         Client client = this.clientService.findById(client_id).get();
         favorites.setBusiness(business);
         favorites.setClient(client);

@@ -32,13 +32,9 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event create(Long event_id, EventDto eventDto) {
-
-        Event event = this.eventRepo.findById(event_id).get();
-        Business business = this.businessService.findById(eventDto.getBusiness_id()).get();
-
-
-        Event event1 = new Event(event_id, eventDto.getName(), eventDto.getDate_time(), eventDto.getType_of_event(),
+    public Event create(EventDto eventDto) {
+        Business business = this.businessService.findById(eventDto.getBusiness_id());
+        Event event1 = new Event(eventDto.getName(), eventDto.getDate_time(), eventDto.getType_of_event(),
                 eventDto.getCapacity(), business);
 
         return eventRepo.save(event1);
@@ -48,7 +44,7 @@ public class EventServiceImpl implements EventService {
     public Event edit(Long event_id, EventDto eventDto) {
 
         Event event = this.eventRepo.findById(event_id).get();
-        Business business = this.businessService.findById(eventDto.getBusiness_id()).get();
+        Business business = this.businessService.findById(eventDto.getBusiness_id());
 
         event.setId(event_id);
         event.setName(event.getName());

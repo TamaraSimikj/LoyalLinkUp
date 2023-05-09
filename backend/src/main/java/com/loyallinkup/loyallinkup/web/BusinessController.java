@@ -25,31 +25,27 @@ public class BusinessController {
         }
 
         @GetMapping("/{id}")
-        public Optional<Business> getBusinessById(@PathVariable Long id) {
-            Optional<Business> business = businessService.findById(id);
-            //return business.map(ResponseEntity::ok)
-            //        .orElseGet(() -> ResponseEntity.notFound().build());
+        public Business getBusinessById(@PathVariable Long id) {
+            Business business = businessService.findById(id);
             return business;
         }
 
         @PostMapping("/add")
         public Business createBusiness(@RequestBody BusinessDto businessDto) {
             Business createdBusiness = businessService.create(businessDto);
-            //return ResponseEntity.created(URI.create("/business/" + createdBusiness.getId())).body(createdBusiness);
             return createdBusiness;
         }
 
         @PutMapping("/{id}")
         public Business updateBusiness(@PathVariable Long id, @RequestBody BusinessDto businessDto) {
             Business updatedBusiness = businessService.edit(id, businessDto);
-            //return ResponseEntity.ok(updatedBusiness);
             return updatedBusiness;
         }
 
         @DeleteMapping("/{id}")
         public boolean deleteBusiness(@PathVariable Long id) {
             boolean deleted = businessService.delete(id);
-            return deleted;// ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+            return deleted;
         }
 }
 

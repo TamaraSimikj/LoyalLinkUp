@@ -4,7 +4,6 @@ import com.loyallinkup.loyallinkup.model.Business;
 import com.loyallinkup.loyallinkup.model.dto.BusinessDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BusinessService {
 
@@ -16,7 +15,7 @@ public interface BusinessService {
 
     List<Business> listAll();
 
-    Optional<Business> findById(Long id);
+    Business findById(Long id);
 
     //TODO:Event addEvent(EventDto eventDto); + drugite
 }

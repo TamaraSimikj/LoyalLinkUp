@@ -57,7 +57,7 @@ public class ReviewServiceImpl implements ReviewService {
         review.setGrade(reviewDto.getGrade());
 
         Client client = this.clientService.findById(reviewDto.getClient_id()).get();
-        Business business = this.businessService.findById(reviewDto.getBusiness_id()).get();
+        Business business = this.businessService.findById(reviewDto.getBusiness_id());
         Event event = this.eventService.findById(reviewDto.getEvent_id());
         // ne raboti(crveno) deka nema seuste eventService Impl
         review.setClient(client);
@@ -70,7 +70,7 @@ public class ReviewServiceImpl implements ReviewService {
     public Review create(ReviewDto reviewDto) {
 
         Client client = this.clientService.findById(reviewDto.getClient_id()).get();
-        Business business = this.businessService.findById(reviewDto.getBusiness_id()).get();
+        Business business = this.businessService.findById(reviewDto.getBusiness_id());
         Event event = this.eventService.findById(reviewDto.getEvent_id());
 
         Review review = new Review(reviewDto.getDate_time(),reviewDto.getComment(),
