@@ -2,7 +2,6 @@ package service.impl;
 
 import model.*;
 import model.dto.PointsDto;
-import org.springframework.stereotype.Service;
 import repo.BusinessRepo;
 import repo.ClientRepo;
 import repo.PointsRepo;
@@ -11,15 +10,14 @@ import service.PointsService;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class PointsServiceImplementation implements PointsService
+public class PointsServiceImpl implements PointsService
 {
 
     private final PointsRepo pointsRepo;
     private final BusinessServiceImpl businessService;
     private final ClientServiceImpl clientService;
 
-    public PointsServiceImplementation(PointsRepo pointsRepo, BusinessRepo businessRepo, ClientRepo clientRepo, ClientRepo clientRepo1, BusinessRepo businessRepo1, BusinessServiceImpl businessService, ClientServiceImpl clientService) {
+    public PointsServiceImpl(PointsRepo pointsRepo, BusinessRepo businessRepo, ClientRepo clientRepo, ClientRepo clientRepo1, BusinessRepo businessRepo1, BusinessServiceImpl businessService, ClientServiceImpl clientService) {
         this.pointsRepo = pointsRepo;
         this.businessService = businessService;
         this.clientService = clientService;
