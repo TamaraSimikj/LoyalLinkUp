@@ -1,15 +1,18 @@
 package model.dto;
 
+import lombok.Data;
+
 import java.math.BigInteger;
 
+@Data
 public class PointsDto {
 
     private Integer loyal_points;
 
     private Integer loyal_awards;
 
-    private BigInteger business_id;
+    private Long business_id;
 
-    private BigInteger client_id;
+    private Long client_id;
 
 }

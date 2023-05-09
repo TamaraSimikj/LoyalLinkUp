@@ -13,4 +13,5 @@ public class BusinessDto {
     private String phone_number;
 
     private TypeOfBusiness type_of_business;
+
 }

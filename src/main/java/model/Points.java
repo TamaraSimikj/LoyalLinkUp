@@ -1,9 +1,13 @@
 package model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
+import java.math.BigInteger;
 
 @Table(name = "points")
 @Entity
+@Data
 public class Points {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +25,15 @@ public class Points {
     @JoinColumn(name="client_id")
     private Client client;
 
+    public Points(Long points_id, Integer loyal_points, Integer loyal_awards, Client client_id, Business business_id) {
+      this.points_id = points_id;
+      this.loyal_points = loyal_points;
+      this. loyal_awards = loyal_awards;
+      this.client = client_id;
+      this.business = business_id;
+    }
+
+    public Points() {
+
+    }
 }

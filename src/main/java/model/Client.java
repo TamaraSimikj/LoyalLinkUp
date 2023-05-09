@@ -1,7 +1,6 @@
 package model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Table(name = "clients")
@@ -10,16 +9,16 @@ import lombok.Data;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id = 0L;
+    private Long id;
 
     private String name;
     private String surname;
     private String phone_number;
 
-    public Client(String name, String surname, String phoneNumber) {
+    public Client(String name, String surname, String phone_number) {
         this.name = name;
         this.surname = surname;
-        this.phone_number = phoneNumber;
+        this.phone_number = phone_number;
     }
 
     public Client() {
