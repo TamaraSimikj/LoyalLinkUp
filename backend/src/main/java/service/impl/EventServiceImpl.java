@@ -4,12 +4,14 @@ import model.Business;
 import model.Event;
 import model.Review;
 import model.dto.EventDto;
+import org.springframework.stereotype.Service;
 import repo.EventRepo;
 import service.BusinessService;
 import service.EventService;
 
 import java.util.List;
 
+@Service
 public class EventServiceImpl implements EventService {
 
     private final EventRepo eventRepo;

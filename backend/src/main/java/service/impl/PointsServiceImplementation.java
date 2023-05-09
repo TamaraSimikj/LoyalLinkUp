@@ -2,6 +2,7 @@ package service.impl;
 
 import model.*;
 import model.dto.PointsDto;
+import org.springframework.stereotype.Service;
 import repo.BusinessRepo;
 import repo.ClientRepo;
 import repo.PointsRepo;
@@ -10,6 +11,7 @@ import service.PointsService;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PointsServiceImplementation implements PointsService
 {
 
