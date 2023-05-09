@@ -33,7 +33,7 @@ public class Review {
     @JoinColumn(name="event_id")
     private Event event;
 
-    Review(){
+    public Review(){
 
     }
     public Review(LocalDateTime date_time, String comment, Integer grade, Client client, Business business, Event event) {
