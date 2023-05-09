@@ -2,7 +2,6 @@ package service.impl;
 
 import model.*;
 import model.dto.PointsDto;
-import model.exceptions.InvalidBusinessIdException;
 import repo.BusinessRepo;
 import repo.ClientRepo;
 import repo.PointsRepo;
@@ -54,18 +53,20 @@ public class PointsServiceImplementation implements PointsService
         points.setPoints_id(points_id);
         points.setLoyal_points(pointsDto.getLoyal_points());
         points.setLoyal_awards(points.getLoyal_awards());
-        points.setBusiness(points.getBusiness());
-        points.setClient(points.getClient());
+        points.setBusiness(business);
+        points.setClient(client);
 
 
         return this.pointsRepo.save(points);
     }
 
     @Override
-    public Optional<Points> delete(Long points_id) {
+    public Boolean delete(Long points_id) {
 
-        Optional<Points> points = this.findById(points_id);
-        this.pointsRepo.delete(points);
-        return points;
+        if(this.pointsRepo.findById(points_id).isPresent()){
+            this.pointsRepo.deleteById(points_id);
+            return true;
+        }else
+            return false;
     }
 }

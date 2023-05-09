@@ -16,5 +16,5 @@ public interface PointsService {
 
     Points edit (Long points_id, PointsDto pointsDto);
 
-    Optional<Points> delete (Long points_id);
+    Boolean delete (Long points_id);
 }
