@@ -9,7 +9,8 @@ import lombok.Data;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "client_id")
+    private Long id = 0L;
 
     private String name;
     private String surname;

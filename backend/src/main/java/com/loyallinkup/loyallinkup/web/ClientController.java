@@ -42,7 +42,7 @@ public class ClientController {
         return ResponseEntity.ok(client);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody ClientDto clientDto) {
         Client client = clientService.edit(id, clientDto);
         if (client.getId() == null) {
@@ -52,7 +52,7 @@ public class ClientController {
         }
     }
 
-    @DeleteMapping("/clients/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         boolean deleted = clientService.deleteById(id);
         if (deleted) {

@@ -10,6 +10,7 @@ import com.loyallinkup.loyallinkup.model.Enum.TypeOfBusiness;
 public class Business {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="business_id")
     private Long id = 0L;
 
     private String name;

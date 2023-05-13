@@ -28,3 +28,4 @@ CREATE TABLE if not exists points
     constraint client_id_fk  foreign key (client_id) references clients(client_id) on delete set null,
     constraint business_id_fk  foreign key (business_id) references businesses(business_id) on delete set null
 );
+

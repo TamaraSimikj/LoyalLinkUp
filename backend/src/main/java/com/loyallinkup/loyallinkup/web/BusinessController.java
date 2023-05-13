@@ -36,13 +36,13 @@ public class BusinessController {
             return createdBusiness;
         }
 
-        @PutMapping("/{id}")
+        @PutMapping("/edit/{id}")
         public Business updateBusiness(@PathVariable Long id, @RequestBody BusinessDto businessDto) {
             Business updatedBusiness = businessService.edit(id, businessDto);
             return updatedBusiness;
         }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/delete/{id}")
         public boolean deleteBusiness(@PathVariable Long id) {
             boolean deleted = businessService.delete(id);
             return deleted;
