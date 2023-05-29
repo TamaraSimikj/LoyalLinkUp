@@ -51,6 +51,9 @@ export class EventService {
     })
 
 }
+getAllTypeOfEvents() : Observable<String[]> {
+  return this.http.get<String[]>(this.url.concat('/types'))
+}
 
 }
 

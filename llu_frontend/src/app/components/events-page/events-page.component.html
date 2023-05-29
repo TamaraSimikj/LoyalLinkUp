@@ -1,0 +1,59 @@
+<div class="row container-sm-fluid">
+    <div class="col-lg-6 col-md-12 m-auto p-4 shadow">
+        <h1 class="fs-3">ALL EVENTS <span class="text-muted fs-6">in </span></h1>
+             <select class="form-select" aria-label="City filter">
+                <option selected>Choose a city</option>
+                <option *ngFor="let address of addresses" value="{{address.address_id}}">{{address.city_name}}</option>
+              </select>
+        <p class="text-muted mb-1 mt-1 me-3 text-end">choose place by your preference</p>
+        <select class="form-select" aria-label="Type of events">
+            <option selected>Choose a type of event</option>
+            <option *ngFor="let type of typeOfEvents" value="{{type}}">{{type}}</option>
+          </select>
+
+        <button class="btn brand-color w-100 mt-3">Filter</button>
+    </div>
+
+</div>
+
+<div class="row container-sm-fluid">
+  <div class="col-lg-12 col-md-12 ms-0 bg-secondary p-2 text-center">
+        <h1 class="fs-6 text-light">
+          Suggestions
+        </h1>
+        <div class="col-4 m-auto">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let event of events$ | async">{{event.name}} <span class="badge bg-success">100%</span></li>
+          </ul>
+        </div>
+  </div>  
+</div>
+
+ 
+<div class="row container-sm-fluid">
+      <div class="col-12 text-center m-auto p-2">
+        <h1 class="fs-5 text-dark">
+          Events 
+        </h1>
+      </div>
+
+      <div *ngFor="let event of events$ | async" class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-header">
+            {{ event.name }}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ event.business.address.city_name}}</h5>
+          
+            <p class="card-text">Capacity: {{event.capacity}}</p>
+            <p class="card-text">Type: {{event.type_of_event}}</p>
+            <a href="#" class="btn btn-primary">{{event.business.name}}</a>
+          </div>
+          <div class="card-footer text-muted">
+            <p class="card-text">{{event.date_time | date}}</p>
+          </div>
+        </div>
+      </div>
+     
+
+    </div>

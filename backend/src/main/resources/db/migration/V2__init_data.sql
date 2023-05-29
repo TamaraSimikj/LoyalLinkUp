@@ -5,11 +5,15 @@ insert into clients(name,surname,phone_number) values
                                                    ('Tamara','Simikj','078321932'),
                                                    ('Donce','Bojcev','075213332');
 
+insert into addresses(city_name, street_name, street_number) values
+                                                                 ('Skopje','Orce Nikolov', '105'),
+                                                                 ('Tetovo' ,'Pariska ulica', '12'),
+                                                                 ('Ohrid','Samoilova ulica', '1');
 
 insert into businesses(name,phone_number,address,type_of_business) values
-                                                                       ('Nadzak','023128113','Orce Nikolov 105', 'RESTAURANT'),
-                                                                       ('Netaville','021343321','Nikola Tesla 9', 'CAFFE'),
-                                                                       ('Public Room','023122233','50-ta Divizija', 'BAR');
+                                                                       ('Nadzak','023128113',1, 'RESTAURANT'),
+                                                                       ('Netaville','021343321',2, 'CAFFE'),
+                                                                       ('Public Room','023122233',3, 'BAR');
 
 
 insert into events(name,date_time,type_of_event,capacity,business_id) values

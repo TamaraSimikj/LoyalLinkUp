@@ -1,10 +1,13 @@
 package com.loyallinkup.loyallinkup.web;
 
 
+import com.loyallinkup.loyallinkup.model.Enum.TypeOfEvent;
 import com.loyallinkup.loyallinkup.model.Event;
 import com.loyallinkup.loyallinkup.model.dto.EventDto;
 import com.loyallinkup.loyallinkup.service.EventService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -43,6 +46,11 @@ public class EventController {
     public boolean deleteEvent(@PathVariable Long id) {
         boolean deleted = eventService.delete(id);
         return deleted;
+    }
+
+    @GetMapping("/types")
+    public List<TypeOfEvent> getAllEventTypes() {
+        return Arrays.stream(TypeOfEvent.values()).toList();
     }
 
 }

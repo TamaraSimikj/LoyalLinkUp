@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ClientListComponent } from './components/client-list/client-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { EventsPageComponent } from './components/events-page/events-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientListComponent
+    ClientListComponent,
+    NavbarComponent,
+    EventsPageComponent
   ],
   imports: [
     BrowserModule,

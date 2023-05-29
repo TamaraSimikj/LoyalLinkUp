@@ -1,8 +1,10 @@
 package com.loyallinkup.loyallinkup.service.impl;
 
+import com.loyallinkup.loyallinkup.model.Address;
 import com.loyallinkup.loyallinkup.model.Business;
 import com.loyallinkup.loyallinkup.model.dto.BusinessDto;
 import com.loyallinkup.loyallinkup.model.exceptions.InvalidBusinessIdException;
+import com.loyallinkup.loyallinkup.repo.AddressRepo;
 import com.loyallinkup.loyallinkup.service.BusinessService;
 import org.springframework.stereotype.Service;
 import com.loyallinkup.loyallinkup.repo.BusinessRepo;
@@ -13,15 +15,23 @@ import java.util.List;
 public class BusinessServiceImpl implements BusinessService {
 
     private final BusinessRepo businessRepo;
-
-    public BusinessServiceImpl(BusinessRepo businessRepo) {
+    private final AddressRepo addressRepo;
+    public BusinessServiceImpl(BusinessRepo businessRepo, AddressRepo addressRepo) {
         this.businessRepo = businessRepo;
+        this.addressRepo = addressRepo;
     }
 
     @Override
     public Business create(BusinessDto businessDto) {
-       Business business = new Business(businessDto.getName(),
-                businessDto.getAddress(), businessDto.getPhone_number(),
+
+        Address address = new Address( businessDto.getAddressDto().getCity_name(),
+                businessDto.getAddressDto().getStreet_name(),
+                businessDto.getAddressDto().getStreet_number());
+
+        address = this.addressRepo.save(address);
+
+        Business business = new Business(businessDto.getName(),
+                address, businessDto.getPhone_number(),
                businessDto.getType_of_business());
 
         return this.businessRepo.save(business);
@@ -32,7 +42,12 @@ public class BusinessServiceImpl implements BusinessService {
 
         Business business = this.businessRepo.findById(id).orElseThrow(InvalidBusinessIdException::new);
             business.setName(businessDto.getName());
-            business.setAddress(businessDto.getAddress());
+
+            business.setAddress(new Address(
+                    businessDto.getAddressDto().getCity_name(),
+                    businessDto.getAddressDto().getStreet_name(),
+                    businessDto.getAddressDto().getStreet_number()));
+
             business.setPhone_number(businessDto.getPhone_number());
             business.setType_of_business(businessDto.getType_of_business());
             this.businessRepo.save(business);
