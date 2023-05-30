@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { BehaviorSubject, map, Observable, switchMap, tap } from 'rxjs';
 import { Address } from 'src/app/interfaces/address';
 import { Event } from 'src/app/interfaces/event';
 import { AddressService } from 'src/app/services/address.service';
@@ -14,9 +15,15 @@ export class EventsPageComponent implements OnInit {
 
   addresses! : Address[]
   typeOfEvents! : String[]
-  events$! : Observable<Event[]>
+  events! : Event[]
+
 
   subject$ = new BehaviorSubject<boolean>(true)
+
+  filterForm = new FormGroup({
+    city: new FormControl('Choose a city'),
+    type: new FormControl('Choose a type of event')
+  })
 
   constructor(private addressService: AddressService,private eventService: EventService) { }
 
@@ -40,7 +47,15 @@ export class EventsPageComponent implements OnInit {
     })
   }
 
-  getAllEvents() {
-    this.events$ = this.subject$.pipe(switchMap(_ =>  this.eventService.getAllEvents()))
+  getAllEvents() { 
+
+  this.eventService.getAllEvents().subscribe(data => {this.events = data})
+  }
+
+  filter() {
+
+
+    this.eventService.filterEventsByCityAndtype(this.filterForm.value.city!,this.filterForm.value.type!)
+    .subscribe(data => {this.events = data})
   }
 }

@@ -55,5 +55,25 @@ getAllTypeOfEvents() : Observable<String[]> {
   return this.http.get<String[]>(this.url.concat('/types'))
 }
 
+
+getAllEventsByBusinessId(id: number): Observable<Event[]>{
+  return this.http.get<Event[]>(this.url.concat(`/business/${id}`))
+}
+
+
+filterEventsByCityAndtype(city: string, type: string) : Observable<Event[]> {
+  return this.http.get<Event[]>(this.url.concat('/filter'), {
+    params : {
+      city: city,
+      type: type
+    }
+  })
+}
+
+
+
+
+
+
 }
 

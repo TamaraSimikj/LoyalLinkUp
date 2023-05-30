@@ -21,6 +21,11 @@ export class BusinessService {
     return this.http.get<Business>(this.url.concat(`/${id}`))
   }
 
+  getBusinessByName(name: string) : Observable<Business>{
+    return this.http.get<Business>(this.url.concat(`/name/${name}`))
+  }
+
+
   deleteBusinessById(id: number) : void{
     this.http.delete(this.url.concat(`/delete/${id}`)).subscribe()
   }
