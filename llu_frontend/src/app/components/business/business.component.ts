@@ -14,6 +14,7 @@ export class BusinessComponent implements OnInit {
 
   business! : Business
   events! : Event[]
+
   constructor(private businessService: BusinessService, private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -40,4 +41,7 @@ export class BusinessComponent implements OnInit {
     return name.replace(/_/g, ' ');
   }
   
+  editBusiness(){
+    
+  }
 }

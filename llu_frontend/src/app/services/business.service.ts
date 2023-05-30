@@ -45,11 +45,28 @@ export class BusinessService {
   editBusiness(id: number, business: Business): void {
     this.http.put(this.url.concat(`/edit/${id}`), {
       name: business.name,
-      address: business.address,
+      address: {
+        city : business.address.city_name,
+        street_name: business.address.street_name,
+        street_number: business.address.street_number
+      },
       phone_number: business.phone_number,
       type_of_business: business.type_of_business
     }).subscribe(data => {
       tap(data)
     })
+  }
+
+
+  searchByName(term: string): Observable<Business[]> {
+    return this.http.get<Business[]>(this.url.concat('/search'), {
+      params: {
+        name : term
+      }
+    })
+  }
+
+  listTypeOfBusinesses(): Observable<string[]> {
+    return this.http.get<string[]>(this.url.concat('/types'))
   }
 }

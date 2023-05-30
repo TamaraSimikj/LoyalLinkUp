@@ -10,6 +10,8 @@ import { EventsPageComponent } from './components/events-page/events-page.compon
 import { BusinessComponent } from './components/business/business.component';
 import { RemoveSpacesPipe } from './pipes/remove-spaces.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BusinessesComponent } from './components/businesses/businesses.component';
+import { EditBusinessComponent } from './components/edit-business/edit-business.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     EventsPageComponent,
     BusinessComponent,
-    RemoveSpacesPipe
+    RemoveSpacesPipe,
+    BusinessesComponent,
+    EditBusinessComponent
   ],
   imports: [
     BrowserModule,

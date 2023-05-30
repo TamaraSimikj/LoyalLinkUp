@@ -15,4 +15,7 @@ public interface BusinessRepo extends JpaRepository<Business, Long> {
 
     @Query("SELECT b FROM Business b JOIN b.address a WHERE a.city_name = :city")
     List<Business> findBusinessByCity(@Param("city") String city);
+
+    List<Business> findAllByNameContains(String name);
+
 }

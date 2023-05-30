@@ -2,12 +2,13 @@ package com.loyallinkup.loyallinkup.web;
 
 
 import com.loyallinkup.loyallinkup.model.Business;
+import com.loyallinkup.loyallinkup.model.Enum.TypeOfBusiness;
 import com.loyallinkup.loyallinkup.model.dto.BusinessDto;
 import org.springframework.web.bind.annotation.*;
 import com.loyallinkup.loyallinkup.service.BusinessService;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/business")
@@ -28,6 +29,7 @@ public class BusinessController {
         public Business getBusinessByName(@PathVariable String name){
             return businessService.findByName(name);
         }
+
         @GetMapping("/{id}")
         public Business getBusinessById(@PathVariable Long id) {
             Business business = businessService.findById(id);
@@ -55,6 +57,16 @@ public class BusinessController {
         @GetMapping("/city/{name}")
         public List<Business> getBusinessesByCity(@PathVariable String name) {
             return businessService.findByCity(name);
+        }
+
+        @GetMapping("/search")
+        public List<Business> searchBusinessesByName(@RequestParam String name) {
+            return this.businessService.searchByName(name);
+        }
+
+        @GetMapping("/types")
+        public List<TypeOfBusiness> listTypeOfBusinesses() {
+            return Arrays.stream(TypeOfBusiness.values()).toList();
         }
 }
 

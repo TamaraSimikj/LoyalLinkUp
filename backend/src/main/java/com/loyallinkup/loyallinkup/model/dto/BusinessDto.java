@@ -8,7 +8,7 @@ public class BusinessDto {
 
     private String name;
 
-    private AddressDto addressDto;
+    private AddressDto address;
 
     private String phone_number;
 

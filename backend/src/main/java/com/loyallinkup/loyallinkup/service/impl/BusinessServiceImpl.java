@@ -24,9 +24,9 @@ public class BusinessServiceImpl implements BusinessService {
     @Override
     public Business create(BusinessDto businessDto) {
 
-        Address address = new Address( businessDto.getAddressDto().getCity_name(),
-                businessDto.getAddressDto().getStreet_name(),
-                businessDto.getAddressDto().getStreet_number());
+        Address address = new Address( businessDto.getAddress().getCity_name(),
+                businessDto.getAddress().getStreet_name(),
+                businessDto.getAddress().getStreet_number());
 
         address = this.addressRepo.save(address);
 
@@ -42,11 +42,11 @@ public class BusinessServiceImpl implements BusinessService {
 
         Business business = this.businessRepo.findById(id).orElseThrow(InvalidBusinessIdException::new);
             business.setName(businessDto.getName());
-
-            business.setAddress(new Address(
-                    businessDto.getAddressDto().getCity_name(),
-                    businessDto.getAddressDto().getStreet_name(),
-                    businessDto.getAddressDto().getStreet_number()));
+            Address address = addressRepo.save(new Address(
+                    businessDto.getAddress().getCity_name(),
+                    businessDto.getAddress().getStreet_name(),
+                    businessDto.getAddress().getStreet_number()));
+            business.setAddress(address);
 
             business.setPhone_number(businessDto.getPhone_number());
             business.setType_of_business(businessDto.getType_of_business());
@@ -80,5 +80,11 @@ public class BusinessServiceImpl implements BusinessService {
     @Override
     public List<Business> findByCity(String city_name) {
         return this.businessRepo.findBusinessByCity(city_name);
+    }
+
+    @Override
+    public List<Business> searchByName(String name) {
+        return this.businessRepo.findAllByNameContains(name);
+
     }
 }

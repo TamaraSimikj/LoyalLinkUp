@@ -21,6 +21,7 @@ public interface BusinessService {
 
     List<Business> findByCity(String city_name);
 
+    List<Business> searchByName(String name);
 
     //TODO:Event addEvent(EventDto eventDto); + drugite
 }
