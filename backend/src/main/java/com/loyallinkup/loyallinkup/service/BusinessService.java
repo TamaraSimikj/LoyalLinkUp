@@ -17,5 +17,10 @@ public interface BusinessService {
 
     Business findById(Long id);
 
+    Business findByName(String name);
+
+    List<Business> findByCity(String city_name);
+
+
     //TODO:Event addEvent(EventDto eventDto); + drugite
 }

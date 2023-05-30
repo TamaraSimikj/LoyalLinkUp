@@ -72,4 +72,13 @@ public class BusinessServiceImpl implements BusinessService {
     public Business findById(Long id) {
         return this.businessRepo.findById(id).get();
     }
+    @Override
+    public Business findByName(String name) {
+        return this.businessRepo.getBusinessByName(name);
+    }
+
+    @Override
+    public List<Business> findByCity(String city_name) {
+        return this.businessRepo.findBusinessByCity(city_name);
+    }
 }

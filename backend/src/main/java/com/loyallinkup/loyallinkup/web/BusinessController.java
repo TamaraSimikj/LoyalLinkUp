@@ -24,6 +24,10 @@ public class BusinessController {
             return businessService.listAll();
         }
 
+        @GetMapping("name/{name}")
+        public Business getBusinessByName(@PathVariable String name){
+            return businessService.findByName(name);
+        }
         @GetMapping("/{id}")
         public Business getBusinessById(@PathVariable Long id) {
             Business business = businessService.findById(id);
@@ -46,6 +50,11 @@ public class BusinessController {
         public boolean deleteBusiness(@PathVariable Long id) {
             boolean deleted = businessService.delete(id);
             return deleted;
+        }
+
+        @GetMapping("/city/{name}")
+        public List<Business> getBusinessesByCity(@PathVariable String name) {
+            return businessService.findByCity(name);
         }
 }
 

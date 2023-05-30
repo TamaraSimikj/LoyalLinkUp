@@ -16,4 +16,10 @@ public interface EventService {
         Event edit (Long event_id, EventDto eventDto);
 
         Boolean delete (Long id);
+
+        List<Event> listAllEventsByBusinessId(Long id);
+
+        List<Event> listAllByTypeOfEvent(String type_of_event);
+
+        List<Event> listAllEventsByCityAndType(String city_name, String event_type);
 }

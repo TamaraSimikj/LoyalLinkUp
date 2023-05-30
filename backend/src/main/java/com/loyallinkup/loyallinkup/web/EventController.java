@@ -53,4 +53,20 @@ public class EventController {
         return Arrays.stream(TypeOfEvent.values()).toList();
     }
 
+    @GetMapping("/business/{id}")
+    public List<Event> listAllEventsByBusinessId(@PathVariable Long id){
+        return eventService.listAllEventsByBusinessId(id);
+    }
+
+    @GetMapping("/type/{type}")
+    public List<Event> filterEventsByType(@PathVariable String type){
+        return eventService.listAllByTypeOfEvent(type);
+
+    }
+
+    @GetMapping("/filter")
+    public List<Event> filterByCityAndType(@RequestParam String city, @RequestParam String type) {
+        return this.eventService.listAllEventsByCityAndType(city,type);
+    }
+
 }
